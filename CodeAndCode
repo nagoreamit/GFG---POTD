@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+class Node {
+    public:
+     int data;
+     Node* prev;
+     Node* next;
+    
+    // constructor
+    Node( int data ){
+        this -> data = data;
+        this -> prev = NULL;
+        this -> next = NULL;
+    }
+};
+
+void insertAtHead( Node* &head , int data ){
+    
+    Node* temp = new Node( data );
+    temp -> next = head -> prev;
+    head = temp;
+}
+
+void insertAtTail(Node* &tail , int data){
+    
+    Node* temp = new Node(data);
+    tail -> next = temp -> prev;
+    tail = temp;
+}
+
+void print( Node* head , Node* tail){
+    
+       if (head == NULL) {
+        cout << "List is empty." << endl;
+        return;
+    }
+    
+    Node* temp = head;
+    while ( temp != NULL){
+        cout<< temp -> data ;
+        temp = temp -> next;
+    }
+    cout << endl;
+}
+
+
+int main() {
+    // Write C++ code here
+    
+    Node* node1 = new Node( 24 );
+     
+     //cout << node1 -> data << ;
+    Node* head = node1;
+    Node* tail = node1;
+    
+   insertAtHead( head , 44 );
+   cout << " head = " << head -> data << endl; 
+    
+    insertAtTail( tail , 77 );
+    cout << "temp = " << tail -> data << endl;
+    
+    print( head , tail);
+    
+    
+    return 0;
+}
